@@ -27,22 +27,36 @@ public class TestAbstraction {
         phones.add(i1);
 
 
-        /*
-        Print all objects
+       /*
+        Print each object
         Find and print the most expensive one with the message -> "The most expensive phone is = IPhone"
         Find and print how many phones are convertible -> 2
+
+
+        FIND CHEAPEST (:
          */
 
-        int isConvert = 0;
-        int max = 0;
-        Phone  mostExpensive = null;
+        int countConvertibles = 0;
+        int max = Integer.MIN_VALUE;
+        Phone mostExpensivePhone = null;
+
         for (Phone phone : phones) {
             System.out.println(phone);
-            if(phone.price > max) mostExpensive = phone;
-            if(phone.isConvertible()) isConvert++;
+            if(phone.isConvertible()) countConvertibles++;
+            if(phone.price > max) mostExpensivePhone = phone;
         }
-        System.out.println(isConvert);
-        System.out.println(mostExpensive.getClass().getSimpleName());
 
+        System.out.println(countConvertibles);
+        System.out.println("The most expensive phone is = " + mostExpensivePhone.getClass().getSimpleName());
+        System.out.println("The color of the most expensive phone is = " + mostExpensivePhone.color);
+        System.out.println(Iphone.OS); // invoking static instance variables
+        System.out.println(Samsung.OS);
+        System.out.println(Nokia.OS);
+
+        for (Phone phone : phones) {
+            phone.call();
+            phone.ring();
+            phone.text();
+        }
     }
 }
